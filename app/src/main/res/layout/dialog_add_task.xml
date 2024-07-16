@@ -9,14 +9,14 @@
         android:id="@+id/editTextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="標題"
+        android:hint="任務名稱"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="描述"
+        android:hint="任務說明"
         android:inputType="text" />
 
     <LinearLayout
@@ -27,6 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="18sp"
             android:text="任務類別" />
 
         <Spinner
@@ -45,6 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="18sp"
             android:text="任務級別" />
 
         <Spinner
@@ -70,7 +72,8 @@
             android:id="@+id/dateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No time selected"
+            android:gravity="center"
+            android:text="未選擇時間"
             android:paddingTop="8dp" />
 
     </LinearLayout>

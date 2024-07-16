@@ -185,8 +185,8 @@ class MainActivity : AppCompatActivity() {
 
         val dialogBuilder = AlertDialog.Builder(this)
             .setView(dialogView)
-            .setTitle("Add Task")
-            .setPositiveButton("Add") { dialog, _ ->
+            .setTitle("新增任務")
+            .setPositiveButton("新增") { dialog, _ ->
                 val id = if (GlobalVariable.allTaskList.size == 0) {
                     0
                 } else {

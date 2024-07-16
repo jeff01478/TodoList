@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.appcompat.app.AlertDialog
 import com.example.todolist.GlobalVariable
 import com.example.todolist.R
 import com.example.todolist.Task
@@ -76,34 +77,17 @@ class TaskActivity : AppCompatActivity() {
         }
 
         delete.setOnClickListener {
-            val listId = if (GlobalVariable.searchMod) GlobalVariable.filteredList[GlobalVariable.viewPagerPosition][position].id
-                        else GlobalVariable.taskArrayList[GlobalVariable.viewPagerPosition].list[position].id
-            val listTaskClass = GlobalVariable.allTaskList.find { it.id == listId }?.taskClass
-            if (listTaskClass != null) {
-                if (GlobalVariable.searchMod) {
-                    if (listTaskClass == 0) {
-                        GlobalVariable.filteredList[0].removeIf { it.id == listId }
-                        GlobalVariable.allTaskList.removeIf { it.id == listId }
-                    } else {
-                        GlobalVariable.filteredList[0].removeIf { it.id == listId }
-                        GlobalVariable.filteredList[listTaskClass].removeIf { it.id == listId }
-                        GlobalVariable.allTaskList.removeIf { it.id == listId }
-                        GlobalVariable.taskArrayList[listTaskClass].list.removeIf { it.id == listId }
-                    }
-                } else {
-                    if (listTaskClass == 0) {
-                        GlobalVariable.allTaskList.removeIf { it.id == listId }
-                    } else {
-                        GlobalVariable.allTaskList.removeIf { it.id == listId }
-                        GlobalVariable.taskArrayList[listTaskClass].list.removeIf { it.id == listId }
-                    }
+            AlertDialog.Builder(this).apply {
+                setTitle("刪除任務")
+                setMessage("確定要將此任務刪除?")
+                setPositiveButton("確認") { _, _ ->
+                    deleteTask(position)
                 }
-                GlobalVariable.deleteNote(listId, listTaskClass)
+                setNegativeButton("取消") { _, _ ->
+
+                }
+                show()
             }
-            GlobalVariable.updateListView(GlobalVariable.taskArrayList)
-            if (GlobalVariable.searchMod)
-                GlobalVariable.updateListView(GlobalVariable.filteredList)
-            finish()
         }
 
         back.setOnClickListener {
@@ -117,5 +101,36 @@ class TaskActivity : AppCompatActivity() {
         back = findViewById(R.id.back)
         save = findViewById(R.id.save)
         delete = findViewById(R.id.delete)
+    }
+
+    private fun deleteTask(position: Int) {
+        val listId = if (GlobalVariable.searchMod) GlobalVariable.filteredList[GlobalVariable.viewPagerPosition][position].id
+        else GlobalVariable.taskArrayList[GlobalVariable.viewPagerPosition].list[position].id
+        val listTaskClass = GlobalVariable.allTaskList.find { it.id == listId }?.taskClass
+        if (listTaskClass != null) {
+            if (GlobalVariable.searchMod) {
+                if (listTaskClass == 0) {
+                    GlobalVariable.filteredList[0].removeIf { it.id == listId }
+                    GlobalVariable.allTaskList.removeIf { it.id == listId }
+                } else {
+                    GlobalVariable.filteredList[0].removeIf { it.id == listId }
+                    GlobalVariable.filteredList[listTaskClass].removeIf { it.id == listId }
+                    GlobalVariable.allTaskList.removeIf { it.id == listId }
+                    GlobalVariable.taskArrayList[listTaskClass].list.removeIf { it.id == listId }
+                }
+            } else {
+                if (listTaskClass == 0) {
+                    GlobalVariable.allTaskList.removeIf { it.id == listId }
+                } else {
+                    GlobalVariable.allTaskList.removeIf { it.id == listId }
+                    GlobalVariable.taskArrayList[listTaskClass].list.removeIf { it.id == listId }
+                }
+            }
+            GlobalVariable.deleteNote(listId, listTaskClass)
+        }
+        GlobalVariable.updateListView(GlobalVariable.taskArrayList)
+        if (GlobalVariable.searchMod)
+            GlobalVariable.updateListView(GlobalVariable.filteredList)
+        finish()
     }
 }
