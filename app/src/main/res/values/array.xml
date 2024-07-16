@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="priority_array">
+        <item>無</item>
+        <item>高</item>
+        <item>低</item>
+    </string-array>
+
+    <string-array name="taskClass_array">
+        <item>未分類</item>
+        <item>個人</item>
+        <item>工作</item>
+    </string-array>
+</resources>

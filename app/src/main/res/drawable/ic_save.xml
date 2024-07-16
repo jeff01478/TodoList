@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 外部轮廓 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M4,2L20,2c1.1,0 2,0.9 2,2L22,20c0,1.1 -0.9,2 -2,2H4c-1.1,0 -2,-0.9 -2,-2L2,4c0,-1.1 0.9,-2 2,-2zM6,4L6,6c0,0.55 0.45,1 1,1h10c0.55,0 1,-0.45 1,-1L18,4L6,4zM12,8c-2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4 -1.79,-4 -4,-4zM20,20L20,16c0,-2.21 -1.79,-4 -4,-4H8c-2.21,0 -4,1.79 -4,4L4,20H20z"/>
+
+    <!-- 软盘的窗口 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M6,4L18,4L18,6c0,0.55 -0.45,1 -1,1L7,7c-0.55,0 -1,-0.45 -1,-1L6,4z"/>
+
+    <!-- 软盘的中间圆 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,10c1.1,0 2,0.9 2,2s-0.9,2 -2,2 -2,-0.9 -2,-2 0.9,-2 2,-2z"/>
+</vector>
